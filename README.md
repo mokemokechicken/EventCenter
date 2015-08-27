@@ -8,7 +8,7 @@
 EventCenter is a swift library like Android's EventBus.
 Observers can register type safe handlers(no need to type casting!), and unregister.
 The handler's running thread can be specified when registering the hander.
-
+ 
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -78,6 +78,7 @@ class MyAwesomeModel {
 ## Author
 
 Ken Morishita, mokemokechicken@gmail.com
+
 
 ## License
 
