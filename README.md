@@ -1,6 +1,6 @@
 # EventCenter
 
-[![CI Status](http://img.shields.io/travis/Ken Morishita/EventCenter.svg?style=flat)](https://travis-ci.org/Ken Morishita/EventCenter)
+[![CI Status](http://img.shields.io/travis/mokemokechicken/EventCenter.svg?style=flat)](https://travis-ci.org/mokemokechicken/EventCenter)
 [![Version](https://img.shields.io/cocoapods/v/EventCenter.svg?style=flat)](http://cocoapods.org/pods/EventCenter)
 [![License](https://img.shields.io/cocoapods/l/EventCenter.svg?style=flat)](http://cocoapods.org/pods/EventCenter)
 [![Platform](https://img.shields.io/cocoapods/p/EventCenter.svg?style=flat)](http://cocoapods.org/pods/EventCenter)
