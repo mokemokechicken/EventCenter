@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   s.homepage         = "https://github.com/mokemokechicken/EventCenter"
   s.license          = 'MIT'
   s.author           = { "Ken Morishita" => "mokemokechicken@gmail.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/EventCenter.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://github.com/mokemokechicken/EventCenter.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/mokemokechicken'
 
   s.platform     = :ios, '8.0'
