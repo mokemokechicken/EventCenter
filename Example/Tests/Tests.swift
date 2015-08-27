@@ -114,9 +114,7 @@ class EventCenterSpec: QuickSpec {
                     ec.post(30)
                 }
                 
-                expect(called) == 0
-
-                NSThread.sleepForTimeInterval(0.5)
+                NSThread.sleepForTimeInterval(1.0)
 
                 waitUntil { done in
                     NSThread.sleepForTimeInterval(0.9)
