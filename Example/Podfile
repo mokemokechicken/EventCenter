@@ -1,0 +1,13 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+target 'EventCenter_Example', :exclusive => true do
+  pod "EventCenter", :path => "../"
+end
+
+target 'EventCenter_Tests', :exclusive => true do
+  pod "EventCenter", :path => "../"
+
+  pod 'Quick', '~> 0.3.1'
+  pod 'Nimble'
+end
