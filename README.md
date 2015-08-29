@@ -8,7 +8,7 @@
 EventCenter is a swift library like Android's EventBus.
 Observers can register type safe handlers(no need to type casting!), and unregister.
 The handler's running thread can be specified when registering the hander.
- 
+
 ## Usage
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -35,8 +35,18 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         let ec = EventCenter.defaultCenter
 
+        // Handlers called only when the posted object-type is equal to the hander's arg-type.
         ec.register(self) { (event: MyAwesomeModel.UpdateEvent) in
             self.updateView()
+        }
+
+        ec.register(self) { (event: MyAwesomeModel.StoreEvent) in
+            switch(event) {
+            case .SUCCESS:
+                print("store ok!")
+            case .ERROR:
+                print("store error!")
+            }
         }
 
         // or
@@ -64,11 +74,19 @@ class ViewController: UIViewController {
 
 
 class MyAwesomeModel {
-    class UpdateEvent {}
+  class UpdateEvent {}
+  enum StoreEvent {
+      case SUCCESS
+      case ERROR
+  }
 
-    func notify() {
-        EventCenter.defaultCenter.post(UpdateEvent())
-    }
+  func notifyUpdate() {
+      EventCenter.defaultCenter.post(UpdateEvent())
+  }
+
+  func notifyStoreResult() {
+      EventCenter.defaultCenter.post(StoreEvent.SUCCESS)
+  }
 }
 
 // If you want to see more cases, see also Tests.swift

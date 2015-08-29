@@ -15,8 +15,19 @@ class ViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         let ec = EventCenter.defaultCenter
         
+        
+        // Handlers called only when the posted object-type is equal to the hander's arg-type.
         ec.register(self) { (event: MyAwesomeModel.UpdateEvent) in
             self.updateView()
+        }
+        
+        ec.register(self) { (event: MyAwesomeModel.StoreEvent) in
+            switch(event) {
+            case .SUCCESS:
+                print("store ok!")
+            case .ERROR:
+                print("store error!")
+            }
         }
         
         // or
@@ -45,11 +56,20 @@ class ViewController: UIViewController {
 
 class MyAwesomeModel {
     class UpdateEvent {}
+    enum StoreEvent {
+        case SUCCESS
+        case ERROR
+    }
     
-    func notify() {
+    func notifyUpdate() {
         EventCenter.defaultCenter.post(UpdateEvent())
     }
+    
+    func notifyStoreResult() {
+        EventCenter.defaultCenter.post(StoreEvent.SUCCESS)
+    }
 }
+
 
 
 // If you want to see more cases, see also Tests.swift

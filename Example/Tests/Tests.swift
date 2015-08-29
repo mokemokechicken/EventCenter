@@ -74,13 +74,25 @@ class EventCenterSpec: QuickSpec {
                     called++
                 }
                 
+                ec.register(self) { (event: EnumEvent) in
+                    called++
+                    switch (event) {
+                    case .SUCCESS(let code):
+                        expect(code) == 200
+                    case .ERROR(let code):
+                        expect(code) == 500
+                    }
+                }
+                
                 ec.register(self, handler: self.myHandler)
                 
                 ec.post(MyEvent(num: 50))
                 ec.post(ChildEvent(num: 60))
                 ec.post(MyEventStruct(name: "struct event"))
+                ec.post(EnumEvent.SUCCESS(code: 200))
+                ec.post(EnumEvent.ERROR(code: 500))
                 
-                expect(called) == 3
+                expect(called) == 5
                 expect(self.called2) == 1
             }
         }
@@ -143,6 +155,11 @@ class ChildEvent : MyEvent {}
 
 struct MyEventStruct {
     let name: String
+}
+
+enum EnumEvent {
+    case SUCCESS(code: Int)
+    case ERROR(code: Int)
 }
 
 //        describe("these will fail") {
